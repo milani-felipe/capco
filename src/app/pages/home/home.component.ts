@@ -8,13 +8,19 @@ import { BidsService } from 'src/app/components/bids.service';
 })
 export class HomeComponent implements OnInit {
 
-  
-  constructor(private bidsService: BidsService) { }
   bids: any;
+  showTrades = false;
+
+  constructor(private bidsService: BidsService) { }
+
   ngOnInit(): void {
     this.bidsService.getBids().subscribe(resp => {
       this.bids = resp;
     })
+  }
+
+  toggleTrades() {
+    this.showTrades = !this.showTrades;
   }
 
 }

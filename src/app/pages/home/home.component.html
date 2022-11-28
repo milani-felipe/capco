@@ -2,7 +2,8 @@
     <div class="chart-container">
         <app-chart></app-chart>
     </div>
-    <div class="bids-container">
+    <button type="button" class="btn btn-primary" (click)="toggleTrades()">{{!showTrades ? 'Exibir ofertas' : 'Ocultar ofertas'}}</button>
+    <div class="bids-container" *ngIf="showTrades">
         <div class="col-container">
             <h5>Intenções de compra</h5>
             <app-bids-list [data]="bids?.bids" ></app-bids-list>
