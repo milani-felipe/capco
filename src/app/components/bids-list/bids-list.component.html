@@ -1,3 +1,20 @@
-<div class="container">
- bids list works!
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of exhibit; let i = index;">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{item[0] | currency}}</td>
+            <td>{{item[1]}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <u class="handle" (click)="toggle()">{{ exhibit.length === 10 ? 'mostrar mais' : 'mostrar menos'}}</u>
 </div>

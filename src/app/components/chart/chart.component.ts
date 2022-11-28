@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import 'chartjs-adapter-date-fns';
 import { BaseChartDirective } from 'ng2-charts';
+import 'chartjs-adapter-date-fns';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
 import { ptBR } from 'date-fns/locale';
 import { add, parseISO } from 'date-fns';
+import 'chart.js';
 import { CandlestickController, CandlestickElement, OhlcController, OhlcElement, } from 'chartjs-chart-financial';
 
 @Component({
@@ -13,12 +14,12 @@ import { CandlestickController, CandlestickElement, OhlcController, OhlcElement,
 })
 export class ChartComponent {
 
-  barCount = 60;
-  initialDateStr = '2017-04-01T00:00:00';
-
+  barCount = 30;
+  initialDateStr = new Date().toISOString();
+  public financialChartPlugins = [];
   public financialChartData: ChartConfiguration['data'] = {
     datasets: [ {
-      label: 'CHRT - Chart.js Corporation',
+      label: 'BITCOIN',
       data: this.getRandomData(this.initialDateStr, this.barCount)
     } ]
   };
@@ -78,7 +79,7 @@ export class ChartComponent {
   }
 
   getRandomData(dateStr: string, count: number): { c: number; x: number; h: number; l: number; o: number }[] {
-    let date = parseISO(dateStr);
+    let date = new Date(dateStr);
     const data = [ this.randomBar(date, 30) ];
     while (data.length < count) {
       date = add(date, { days: 1 });

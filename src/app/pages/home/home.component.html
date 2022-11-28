@@ -1,11 +1,16 @@
 <div class="container-home">
     <div class="chart-container">
-        <h1>Grafico</h1>
         <app-chart></app-chart>
     </div>
     <div class="bids-container">
-        <app-bids-list></app-bids-list>
-        <app-bids-list></app-bids-list>
+        <div class="col-container">
+            <span>Intenções de compra</span>
+            <app-bids-list [data]="bids?.bids" ></app-bids-list>
+        </div>
+        <div class="col-container">
+            <span>Intenções de venda</span>
+            <app-bids-list [data]="bids?.asks" ></app-bids-list>
+        </div>
     </div>
 
     
